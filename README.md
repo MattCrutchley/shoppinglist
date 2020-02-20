@@ -13,11 +13,11 @@ in order to sore the information in the shopping list I have created three mySQL
 
 the master table has been implemented to allow the app to query a database that contains both the user_id and the item_id this makes it possible to return only the items asscoiated with the user that is currently logged in.
 
-## Frontend
+### Frontend
 
 
 
-## Risk Assesment 
+### Risk Assesment 
 
 ![Risk assesment](images/Risk_assesment.png)
 
