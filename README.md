@@ -6,6 +6,10 @@ The objective of this project is to create a web application in python that has 
 ## Project
 in order to do this I have decided to create ana pplicaiton that will store shoppoing list, this will have a user model that allows users to login and view lists that have been create previously.
 
+## Project Tracking
+I have kept track of the projects development using a [trello board](https://trello.com/b/ZqFX1q9P/shopping-list).
+initiall I created user stories of what I would like the app to do from this I created checklists insie of those user stories for how to implement each of those features.
+
 ### Backend
 in order to sore the information in the shopping list I have created three mySQL databases these are related as according to the following ERD diagram:
 
@@ -21,7 +25,7 @@ the master table has been implemented to allow the app to query a database that 
 
 The below risks have been taken into account prior to the development of the app and have been mitigated where possible.
 
-please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/Risk_assesment.png)here for a higher resolution image
+please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/Risk_assesment.png) for a higher resolution image
 
 ![Risk assesment](images/Risk_assesment.png)
 
