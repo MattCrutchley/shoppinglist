@@ -50,9 +50,9 @@ DROP TABLE IF EXISTS `master`;
 CREATE TABLE `master` (
   `user_id` int NOT NULL,
   `item_id` int NOT NULL,
-  `name` varchar(30) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `quantity` float DEFAULT NULL,
-  `units` varchar(50) DEFAULT NULL,
+  `units` varchar(30) DEFAULT NULL,
   KEY `user_id` (`user_id`),
   KEY `item_id` (`item_id`),
   CONSTRAINT `master_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
