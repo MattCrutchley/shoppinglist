@@ -8,7 +8,7 @@ In order to do this I have decided to create ana pplicaiton that will store shop
 
 ### Project Tracking
 I have kept track of the projects development using a [trello board](https://trello.com/b/ZqFX1q9P/shopping-list).
-initiall I created user stories of what I would like the app to do from this I created checklists inside of those user stories for how to implement each of those features. I then converted each of these items into cards so that the project backglog and progress of each sprint could be monitored.
+initially I created user stories of what I would like the app to do from this, I created checklists inside of those user stories for how to implement each of those features. I then converted each of these items into cards so that the project backglog and progress of each sprint could be monitored.
 
 
 ### Backend
