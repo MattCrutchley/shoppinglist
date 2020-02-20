@@ -6,9 +6,10 @@ The objective of this project is to create a web application in python that has 
 ## Project
 In order to do this I have decided to create ana pplicaiton that will store shoppoing list, this will have a user model that allows users to login and view lists that have been create previously.
 
-## Project Tracking
+### Project Tracking
 I have kept track of the projects development using a [trello board](https://trello.com/b/ZqFX1q9P/shopping-list).
-initiall I created user stories of what I would like the app to do from this I created checklists insie of those user stories for how to implement each of those features.
+initiall I created user stories of what I would like the app to do from this I created checklists inside of those user stories for how to implement each of those features. I then converted each of these items into cards so that the project backglog and progress of each sprint could be monitored.
+
 
 ### Backend
 in order to sore the information in the shopping list I have created three mySQL databases these are related as according to the following ERD diagram:
