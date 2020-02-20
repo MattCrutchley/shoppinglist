@@ -19,5 +19,10 @@ the master table has been implemented to allow the app to query a database that 
 
 ### Risk Assesment 
 
+The below risks have been taken into account prior to the development of the app and have been mitigated where possible.
+
+please click [here][RA-link]here for a higher resolution image
+[RA-link]: images/Risk_assesment.pngRisk_assesment.png
+
 ![Risk assesment](images/Risk_assesment.png)
 
