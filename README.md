@@ -17,7 +17,7 @@ the master table has been implemented to allow the app to query a database that 
 
 
 
-Risk Assesment 
+## Risk Assesment 
 
-![ERD](images/Risk assesment.png)
+![Risk assesment](images/Risk_assesment.png)
 
