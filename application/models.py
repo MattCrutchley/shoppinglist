@@ -18,11 +18,14 @@ class items(db.model):
          pass
 
 class master(db.Model):
-    
-    user_id = db.Column(db.Integer,foreign_key=True)
-    item_id = db.column(db.integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.user_id'))
+    item_id = Column(Integer, ForeignKey('items.item_id'))
     name = db.column(db.String(50), nullable=False)
     quantity = (db.float, nullable=False)
     units = db.column(db.string(30), nullable=False)
 
     def __repr__(self):
+     
+        
+        
+
