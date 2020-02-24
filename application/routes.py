@@ -6,7 +6,7 @@ from application import app
 def home():
 	return render_template('home.html', title='home')
 
-@app.route('/register')
+@app.route('/register',methods=['GET', 'POST'])
 def register():
 	return render_template('register.html', title='register')
 
