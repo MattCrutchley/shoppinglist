@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block body %}
+    <p1> Registration page </p1>
+    <p>No account? Sign up</p>
+    <div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            <div class='form_group'>
+                {{ form.email.label }}
+                {{ form.email }}
+                {{ form.password.label }}
+                {{ form.password}}
+                {{ form.confirm_password.label }}
+                {{ form.confirm_password}}
+                {% if form.email.errors %}
+                    <div class='error'>
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
+{% endblock %}
