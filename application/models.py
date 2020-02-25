@@ -5,26 +5,27 @@ class users(db.Model):
     username = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(80), nullable=False)
 
-    def __repr__(self):
-        pass
+    #def __repr__(self):
+     #   pass
 
 class items(db.model):
     item_id = db.column(db.integer, primary_key=True)
     name = db.column(db.String(50), nullable=False)
-    quantity = (db.float, nullable=False)
+    quantity = (db.float)
     units = db.column(db.string(30), nullable=False)
 
-    def__repr__(self):
-         pass
+    #def__repr__(self):
+      #   pass
 
 class master(db.Model):
     user_id = Column(Integer, ForeignKey('users.user_id'))
     item_id = Column(Integer, ForeignKey('items.item_id'))
     name = db.column(db.String(50), nullable=False)
-    quantity = (db.float, nullable=False)
+    quantity = (db.float)
     units = db.column(db.string(30), nullable=False)
 
-    def __repr__(self):
+    #def __repr__(self):
+       # pass
      
         
         
