@@ -8,7 +8,7 @@ class users(db.Model):
     #def __repr__(self):
      #   pass
 
-class items(db.model):
+class items(db.Model):
     item_id = db.column(db.integer, primary_key=True)
     name = db.column(db.String(50), nullable=False)
     quantity = (db.float)
