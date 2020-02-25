@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy import Table, Column, Integer, ForeignKey
 
 class users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
