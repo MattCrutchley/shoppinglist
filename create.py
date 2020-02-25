@@ -1,6 +1,5 @@
 from application import db
-#from application.models import users
-from application.models import items
-#from application.models import master
+from application.models import Posts
 
+db.drop_all()
 db.create_all()
