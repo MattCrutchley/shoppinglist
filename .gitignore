@@ -1,4 +1,5 @@
-~/venv/
-~/__pycache__/*
-~/application/__pycache__/*
-~/*swp
+~/shoppinglist/venv/
+~/shoppinglist/__pycache__/*
+~/shoppinglist/application/__pycache__/*
+~/shoppinglist/*swp
+~/shoppinglist/application/*swp
