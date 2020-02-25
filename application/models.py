@@ -11,17 +11,17 @@ class users(db.Model):
 class items(db.Model):
     item_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    quantity = (db.Float)
+    quantity = db.Column(db.Float)
     units = db.Column(db.String(30), nullable=False)
 
     #def__repr__(self):
       #   pass
 
 class master(db.Model):
-    user_id = Column(db.Integer, ForeignKey('users.user_id'))
-    item_id = Column(db.Integer, ForeignKey('items.item_id'))
+    user_id = db.Column(db.Integer, ForeignKey('users.user_id'))
+    item_id = db.Column(db.Integer, ForeignKey('items.item_id'))
     name = db.Column(db.String(50), nullable=False)
-    quantity = (db.Float)
+    quantity = db.Column(db.Float)
     units = db.Column(db.String(30), nullable=False)
 
     #def __repr__(self):
