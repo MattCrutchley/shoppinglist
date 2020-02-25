@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import Required, Length
+from wtforms.validators import Required, Length, Email, EqualTo, ValidationError
+from application.models import users
 
 
 class additems(FlaskForm):
@@ -24,21 +25,30 @@ class additems(FlaskForm):
     )
 
     submit = SubmitField('add item')
-'''
-class register(FlaskForm):
-    username = StringField('username',
+
+
+class RegistrationForm(FlaskForm):
+    email = StringField('Email',
         validators = [
-            Required(),
-            Length(min=2, max=50)
+           Required(),
+            Email()
         ]
     )
-    password = StringField('password',
+    password = PasswordField('Password',
         validators = [
-            Required(),
-            Length(min=2, max=80)
+           Required(),
         ]
     )
+    confirm_password = PasswordField('Confirm Password',
+        validators = [
+           Required(),
+            EqualTo('password')
+        ]
+    )
+    submit = SubmitField('Sign Up')
 
-    submit = SubmitField('Register')    
+    def validate_email(self, email):
+        user = users.query.filter_by(email=email.data).first()
 
-    '''
+        if user:
+            raise ValidationError('Email already in use')
