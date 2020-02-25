@@ -9,20 +9,20 @@ class users(db.Model):
      #   pass
 
 class items(db.Model):
-    item_id = db.column(db.integer, primary_key=True)
+    item_id = db.column(db.Integer, primary_key=True)
     name = db.column(db.String(50), nullable=False)
-    quantity = (db.float)
-    units = db.column(db.string(30), nullable=False)
+    quantity = (db.Float)
+    units = db.column(db.String(30), nullable=False)
 
     #def__repr__(self):
       #   pass
 
 class master(db.Model):
-    user_id = Column(Integer, ForeignKey('users.user_id'))
-    item_id = Column(Integer, ForeignKey('items.item_id'))
+    user_id = Column(db.Integer, ForeignKey('users.user_id'))
+    item_id = Column(db.Integer, ForeignKey('items.item_id'))
     name = db.column(db.String(50), nullable=False)
-    quantity = (db.float)
-    units = db.column(db.string(30), nullable=False)
+    quantity = (db.Float)
+    units = db.column(db.String(30), nullable=False)
 
     #def __repr__(self):
        # pass
