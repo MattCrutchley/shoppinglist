@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Shopping list</title>
+{% endblock %}
+
+{% block body %}
+<div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}
+            {{ form.name }}
+            {{ form.quantity.label }}
+            {{ form.quantity }}
+            {{ form.quantity.label }}
+            {{ form.quantity }}
+
+
+
+{% endblock %}
