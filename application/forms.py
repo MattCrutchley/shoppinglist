@@ -29,7 +29,7 @@ class additems(FlaskForm):
 
 '''
 class RegistrationForm(FlaskForm):
-    username  = StringField('username',
+    username = StringField('username',
         validators = [
            Required(),
           
