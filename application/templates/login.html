@@ -1,16 +1,23 @@
-{% extends 'base.html' %}
 
-{% block head %}
-<title>Login Page</title>
-{% endblock %}
 
+{% extends "base.html" %}
 {% block body %}
-
-<table>
-	<th> username </th>
-		<tr></tr>
-		
-
+    <p1> login page </p1>
+    <p>No account? Sign up</p>
+	<a href="{{ url_for('about') }}">About</a>
+    <div class='form'>
+        <form method='POST' action=''>
+            {{ form.hidden_tag() }}
+            <div class='form_group'>
+                {{ form.username.label }}
+                {{ form.username }}
+                {{ form.password.label }}
+                {{ form.password}}
+                    </div>
+            </div>
+            <div class='form_group'>
+                {{ form.submit }}
+            </div>
+        </form>
+    </div>
 {% endblock %}
-
-
