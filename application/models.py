@@ -30,15 +30,16 @@ class items(db.Model):
             'name: ', self.name, 'quantity', self.quantity, '\r\n','units ', self.units])
 
 class master(db.Model):
-    user_id = db.Column(db.Integer, ForeignKey('users.id'))
-    item_id = db.Column(db.Integer, ForeignKey('items.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
     name = db.Column(db.String(50), nullable=False)
     quantity = db.Column(db.Float)
     units = db.Column(db.String(30), nullable=False)
 
     def __repr__(self):
         return ''.join([
-            'name: ', self.name, 'quantity', self.quantity, '\r\n','units ', self.units])     
+          'user_id',self.user_id,'\r\n','item_id',self.item_id,'\r\n',  'name: ', self.name,'\r\n', 'quantity', self.quantity, '\r\n','units ', self.units])     
        
         
 
