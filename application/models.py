@@ -28,7 +28,7 @@ class items(db.Model):
     def __repr__(self):
         return ''.join([
             'name: ', self.name, 'quantity', self.quantity, '\r\n','units ', self.units])
-'''
+
 class master(db.Model):
     user_id = db.Column(db.Integer, ForeignKey('users.id'))
     item_id = db.Column(db.Integer, ForeignKey('items.id'))
@@ -36,9 +36,9 @@ class master(db.Model):
     quantity = db.Column(db.Float)
     units = db.Column(db.String(30), nullable=False)
 
-    #def __repr__(self):
-       # pass
-     
-   '''     
+    def __repr__(self):
+        return ''.join([
+            'name: ', self.name, 'quantity', self.quantity, '\r\n','units ', self.units])     
+       
         
 
