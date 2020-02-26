@@ -1,12 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, FloatField
 from wtforms.validators import Required, Length, Email, EqualTo, ValidationError
 from application.models import users
 
 
-'''
 class additems(FlaskForm):
-        name = StringField('name',
+    name = StringField('name',
         validators = [
             Required(),
             Length(min=2, max=50)
@@ -18,7 +17,7 @@ class additems(FlaskForm):
         ]
     )
 
-     units = StringField('units',
+    units = StringField('units',
         validators = [
             Required(),
             Length(min=2, max=30)
@@ -27,7 +26,6 @@ class additems(FlaskForm):
 
     submit = SubmitField('add item')
 
-'''
 class RegistrationForm(FlaskForm):
     username = StringField('username',
         validators = [

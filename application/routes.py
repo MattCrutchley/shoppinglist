@@ -1,6 +1,6 @@
 from flask_login import login_user, current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request
-from application.forms import RegistrationForm, LoginForm
+from application.forms import RegistrationForm, LoginForm, additems
 from application import app, db, bcrypt
 from application.models import items, users
 
@@ -17,15 +17,14 @@ def home():
 @app.route('/add', methods=['GET','POST'])
 def add():
     form = additems()
-    if form.validate_on_submit():
-        itemsData = items(
-                name = form.name.data,
-                quantity = form.quantity.data,
-                units = form.units.data
-                )
-        db.session.add(itemsData)
-        db.session.commit()
-
+    itemsData = items(
+    name = form.name.data,
+    quantity = form.quantity.data,
+    units = form.units.data
+    )
+    db.session.add(itemsData)
+    db.session.commit()
+    return render_template('add.html',title='additems',form=itemsData)
 
 @app.route('/register',methods=['GET','POST'])
 def register():
