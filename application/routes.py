@@ -33,11 +33,11 @@ def register():
     if form.validate_on_submit():
         hash_pw = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
 
-        user = Users(username=form.username.data, password=hash_pw)
+        user = users(username=form.username.data, password=hash_pw)
     
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('post'))
+        return redirect(url_for('login'))
     
     return render_template('register.html', title ='Register',form=form)
 
