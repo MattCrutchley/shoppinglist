@@ -1,7 +1,12 @@
-from application import db
+from application import db, login_manager
 from sqlalchemy import Table, Column, Integer, ForeignKey
+from flask_login import UserMixin
 
-class users(db.Model):
+@login_manager.user_loader
+def load_user(id):
+    return users.query.get(int(id))
+
+class users(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), nullable=False)
     password = db.Column(db.String(80), nullable=False)
