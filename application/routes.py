@@ -16,9 +16,9 @@ def home():
 #will need to be updated once the user model is added
 @app.route('/add', methods=['GET','POST'])
 def add():
-    form = PostForm()
+    form = additems()
     if form.validate_on_submit():
-        itemsData = Posts(
+        itemsData = items(
                 name = form.name.data,
                 quantity = form.quantity.data,
                 units = form.units.data
