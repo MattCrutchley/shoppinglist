@@ -32,7 +32,7 @@ class RegistrationForm(FlaskForm):
     username  = StringField('username',
         validators = [
            Required(),
-            Email()
+          
         ]
     )
     password = PasswordField('Password',
