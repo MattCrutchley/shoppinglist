@@ -4,11 +4,12 @@ from application.forms import RegistrationForm, LoginForm
 from application import app, db, bcrypt
 from application.models import items, users
 
+@app.route('/')
 @app.route('/home')
 @login_required
 def home():
     if current_user.is_authenticated:
-    return redirect(url_for('register'))
+        return redirect(url_for('register'))
     else:
         allitems = items.query.all()   
         return render_template('home.html', title='home', list_=allitems)
