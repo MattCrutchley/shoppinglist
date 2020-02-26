@@ -9,11 +9,11 @@ from application.models import items, users
 @login_required
 def home():
     if current_user.is_authenticated:
-        return redirect(url_for('register'))
-    else:
         allitems = items.query.all()   
         return render_template('home.html', title='home', list_=allitems)
-    #will need to be updated once the user model is added
+    else:
+        return redirect(url_for('register'))
+#will need to be updated once the user model is added
 @app.route('/add', methods=['GET','POST'])
 def add():
     form = PostForm()
