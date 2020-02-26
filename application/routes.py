@@ -17,14 +17,20 @@ def home():
 @app.route('/add', methods=['GET','POST'])
 def add():
     form = additems()
-    itemsData = items(
-    name = form.name.data,
-    quantity = form.quantity.data,
-    units = form.units.data
-    )
-    db.session.add(itemsData)
-    db.session.commit()
-    return render_template('add.html',title='additems',form=itemsData)
+    if form.validate_on_submit():
+        itemsData = items(
+            name = form.name.data,
+            quantity = form.quantity.data,
+            units = form.units.data
+        )
+
+        db.session.add(itemsData)
+        db.session.commit()
+        return redirect(url_for('home'))
+    else:
+        print(form.errors)
+        
+    return render_template('add.html',title='additems',form=form)
 
 @app.route('/register',methods=['GET','POST'])
 def register():
