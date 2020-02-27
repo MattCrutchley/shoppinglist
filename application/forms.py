@@ -67,3 +67,21 @@ class LoginForm(FlaskForm):
 
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')       
+    
+    
+    from flask_login import current_user
+
+class UpdateAccountForm(FlaskForm):
+    username = StringField('First Name',
+        validators=[
+            DataRequired(),
+            Length(min=4, max=50)
+        ])
+
+    submit = SubmitField('Update')
+
+    def validate_username(self,username):
+        if username.data != current_user.username:
+            user = users.query.filter_by(username=username.data).first()
+            if user:
+                raise ValidationError('Username already in use')
