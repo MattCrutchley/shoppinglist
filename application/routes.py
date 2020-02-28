@@ -2,7 +2,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request
 from application.forms import RegistrationForm, LoginForm, AddItems
 from application import app, db, bcrypt
-from application.models import items, users
+from application.models import items, users, master
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/home', methods=['GET','POST'])
@@ -17,8 +17,16 @@ def home():
                 quantity = form.quantity.data,
                 units = form.units.data
                 )
-
             db.session.add(itemsData)
+            db.session.commit()
+
+            masterData = master(user_id = current_user.id,
+            item_id = items.query.filter(items.name == form.name.data).first().id,
+            name = form.name.data,
+            quantity = form.quantity.data,
+            units = form.units.data)
+                    
+            db.session.add(masterData)
             db.session.commit()
             return render_template('home.html', title='home', list_=allitems,form=form)
         else:
