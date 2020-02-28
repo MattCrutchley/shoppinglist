@@ -17,13 +17,12 @@ def home():
                 quantity = form.quantity.data,
                 units = form.units.data
                 )
-            try:
+
                 db.session.add(itemsData)
                 db.session.commit()
-            except Exception as e:
-                print("Problem inserting into db: " + str(e))
-            return redirect(url_for('home'))
-        return render_template('home.html', title='home', list_=allitems,form=form)
+                return render_template('home.html', title='home', list_=allitems,form=form)
+        else:
+            print(form.errors)
     else:
         return redirect(url_for('register'))
 
@@ -32,7 +31,7 @@ def home():
 
 
 
-
+'''
 #will need to be updated once the user model is added
 @app.route('/add', methods=['GET','POST'])
 def add():
@@ -51,7 +50,7 @@ def add():
         print(form.errors)
         
     return render_template('add.html',title='additems',form=form)
-
+'''
 @app.route('/register',methods=['GET','POST'])
 def register():
     form = RegistrationForm()
