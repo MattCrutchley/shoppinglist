@@ -10,7 +10,7 @@ from application.models import items, users, master
 def home():
     if current_user.is_authenticated:
         form = AddItems()
-        allitems = items.query.all()   
+        allitems = master.query.filter(master.user_id == current_user.id).all()
         if form.validate_on_submit():
             itemsData = items(
                 name = form.name.data,

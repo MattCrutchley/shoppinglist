@@ -8,7 +8,9 @@
 
 <div class="content">
     <h1 style="text-align: center">Shopping list</h1>
-    {% if list_|length > 0 %}
+    {% if list_| length < 1 %}
+            </p> you have not added any items, add some below <p>
+	{% else %}		    
 	<table>
 		<tr>
 			<th>Item</th>
@@ -18,9 +20,9 @@
 		</tr>			
 	    {% for item in list_ %}
 		<tr>
-      		<td>{{ list_.name }}</td>
-        	<td>{{ list_.quantity }}</td>
-        	<td>{{ list_.units }}</td>
+      		<td>{{ item.name }}</td>
+        	<td>{{ item.quantity }}</td>
+        	<td>{{ item.units }}</td>
 		<td>Update</td>
 		</tr>
 		<<!-- add delete and update here -->
@@ -28,8 +30,6 @@
 	</table>
 	
 	
-	{% else %}
-	</p> you have not added any items, add some below <p>
 	    <div class="form">
         <form action=' ' method="POST">
 		{{ form.hidden_tag() }}
