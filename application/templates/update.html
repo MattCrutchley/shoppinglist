@@ -6,7 +6,7 @@
 
 {% block body %}
 <div class='form'>
-        <form method='POST' action=''>
+        <form method='POST' action="/update/{{items.id}}">
             {{ form.hidden_tag() }}
             {{ form.name.label }}
             {{ form.name }}
