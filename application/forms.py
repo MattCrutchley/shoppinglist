@@ -74,7 +74,7 @@ class LoginForm(FlaskForm):
 class UpdateAccountForm(FlaskForm):
     username = StringField('First Name',
         validators=[
-            DataRequired(),
+            Required(),
             Length(min=4, max=50)
         ])
 

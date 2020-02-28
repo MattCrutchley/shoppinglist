@@ -4,15 +4,35 @@ from application.forms import RegistrationForm, LoginForm, additems
 from application import app, db, bcrypt
 from application.models import items, users
 
-@app.route('/')
-@app.route('/home')
+@app.route('/', methods=['GET','POST'])
+@app.route('/home', methods=['GET','POST'])
 @login_required
 def home():
     if current_user.is_authenticated:
+        form = additems()
         allitems = items.query.all()   
-        return render_template('home.html', title='home', list_=allitems)
+        if form.validate_on_submit():
+            itemsData = items(
+                name = form.name.data,
+                quantity = form.quantity.data,
+                units = form.units.data
+                )
+            try:
+                db.session.add(itemsData)
+                db.session.commit()
+            except Exception as e:
+                print("Problem inserting into db: " + str(e))
+            return redirect(url_for('home'))
+        return render_template('home.html', title='home', list_=allitems,form=form)
     else:
         return redirect(url_for('register'))
+
+
+
+
+
+
+
 #will need to be updated once the user model is added
 @app.route('/add', methods=['GET','POST'])
 def add():
