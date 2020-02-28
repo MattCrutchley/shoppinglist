@@ -1,6 +1,6 @@
 from flask_login import login_user, current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request
-from application.forms import RegistrationForm, LoginForm, additems
+from application.forms import RegistrationForm, LoginForm, AddItems
 from application import app, db, bcrypt
 from application.models import items, users
 
@@ -9,7 +9,7 @@ from application.models import items, users
 @login_required
 def home():
     if current_user.is_authenticated:
-        form = additems()
+        form = AddItems()
         allitems = items.query.all()   
         if form.validate_on_submit():
             itemsData = items(
