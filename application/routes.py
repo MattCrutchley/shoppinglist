@@ -18,11 +18,12 @@ def home():
                 units = form.units.data
                 )
 
-                db.session.add(itemsData)
-                db.session.commit()
-                return render_template('home.html', title='home', list_=allitems,form=form)
+            db.session.add(itemsData)
+            db.session.commit()
+            return render_template('home.html', title='home', list_=allitems,form=form)
         else:
             print(form.errors)
+        return render_template('home.html', title='home', list_=allitems,form=form)
     else:
         return redirect(url_for('register'))
 
