@@ -1,0 +1,20 @@
+body, html {
+    margin: 0;
+    font-family: sans-serif;
+     color:#778899;background-color:#bdc3c7}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+table, td, th {
+    border: 1px solid #aaa;
+}
+th {
+    height: 30px;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
+}
