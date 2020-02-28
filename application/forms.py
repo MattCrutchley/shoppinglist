@@ -4,7 +4,7 @@ from wtforms.validators import Required, Length, Email, EqualTo, ValidationError
 from application.models import users
 
 
-class additems(FlaskForm):
+class AddItems(FlaskForm):
     name = StringField('name',
         validators = [
             Required(),
