@@ -8,31 +8,29 @@
 
 <div class="content">
     <h1 style="text-align: center">Shopping list</h1>
-	{% if list_ %}	
-    {% for item in list_ %}
-    
-    <p>Name: {{ list_.name }}</p>
-        <p>Quantity: {{ list_.quantity }}</p>
-        <p>Units: {{ list_.units }}</p>
+	{% if list_ %}
+	<table>
+		<tr>
+			<th>Item</th>
+			<th>Quantity</th>
+			<th>Units</th>
+			<th>Actions</th>
+		</tr>			
+	    {% for item in list_ %}
+		<tr>
+      		<td>{{ list_.name }}</td>
+        	<td>{{ list_.quantity }}</td>
+        	<td>{{ list_.units }}</td>
+		<td>
+		<<!-- add delete and update here -->
 	{% endfor %}
+	
+	
+	
 	{% else %}
 	</p> you have not added any items, add some below <p>
 	{%endif%}
 
 
 
-
-
-
-	<!--
-	<table style="margin-left:150px">
-
-
-        <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Units</th>
-            <th>Date added</th>
-            <th>Actions</th>
-	</tr>  -->
 {% endblock %}
