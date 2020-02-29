@@ -14,9 +14,9 @@
 		<thead>    
                 <tr>
                         <th scope="col">Item</th>
-                        <th> scope="col">Quantity</th>
-                        <th> scope="col">Units</th>
-                        <th> scope="col">Actions</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Units</th>
+                        <th scope="col">Actions</th>
 		</tr>
 		</thead>
  {% if list_| length < 1 %}
@@ -31,7 +31,7 @@
       		<td>{{ item.name }}</td>
         	<td>{{ item.quantity }}</td>
         	<td>{{ item.units }}</td>
-		<td><a href ="/update/{{ item.id }}" > Update
+		<td><a href ="/update/{{ item.id }}" > Update </br>
 		<a href ="/delete/{{ item.id }}" > Delete
 		
 		
