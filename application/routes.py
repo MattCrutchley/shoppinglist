@@ -77,7 +77,7 @@ def logout():
 @login_required
 def update_item(id):
     item_id = id
-    item = items.query.get_or_404(id)
+    item = items.query.filter(items.id==id).first()
     form = AddItems()
     if form.validate_on_submit():
         print(form.errors)
@@ -108,7 +108,7 @@ def update_item(id):
 @login_required
 def delete_item(id):
     item_id = id
-    item = items.query.get_or_404(id)
+    item = items.query.filter(items.id==id).first()
     master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
     db.session.delete(master_item)
     db.session.commit()
