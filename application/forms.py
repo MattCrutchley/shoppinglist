@@ -1,13 +1,24 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, FloatField
 from wtforms.validators import Required, Length, Email, EqualTo, ValidationError
-from application.models import users
+from application.models import users, master, items
+from flask_login import current_user
+from application import db
+
+def unique_item():
+    message = 'items must be unique'
+
+    def _unique_item(form,feild):
+        if str(master.query.filter(master.name == item.name.data, user_id == current_user.id).all()) != '[]':
+            raise ValidationError('item already added')
+    return unique_item 
 
 class AddItems(FlaskForm):
     name = StringField('name',
         validators = [
             Required(),
-            Length(min=2, max=50)
+            Length(min=2, max=50),
+            unique_item()
         ]
     )
     quantity = FloatField('quantity',
@@ -24,11 +35,7 @@ class AddItems(FlaskForm):
     )
 
     submit = SubmitField('add item')
-'''
-def validate_item(self, name):
-    if session.query(master.query.filter(master.name=item.name.data, user_id = current_user.id).exists()).scalar():
-        raise ValidationError('item already added')
-'''
+
 class RegistrationForm(FlaskForm):
     username = StringField('username',
         validators = [
@@ -49,7 +56,7 @@ class RegistrationForm(FlaskForm):
     )
     submit = SubmitField('Sign Up')
     
-def validate_email(self, email):
+def validate_username(self, email):
     user = users.query.filter_by(username=username.data).first()
     if user:
         raise ValidationError('Username already in use')

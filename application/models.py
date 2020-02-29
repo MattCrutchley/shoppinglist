@@ -13,7 +13,7 @@ class users(db.Model, UserMixin):
 
     def __repr__(self):
         return ''.join([
-            'User: ', self.username, 'password', self.password, '\r\n',
+            'id:',str(self.id),'User: ', self.username, 'password', self.password, '\r\n',
             ])
 
 class items(db.Model):
@@ -26,8 +26,8 @@ class items(db.Model):
         return (self.user_id)
 
     def __repr__(self):
-        return ''.join([
-            'name: ', self.name, 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])
+        return ''.join(['id:',str(self.id),'\r\n'
+            'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])
 
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
