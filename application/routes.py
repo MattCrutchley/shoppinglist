@@ -75,18 +75,31 @@ def logout():
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_item(id):
-    form = AddItems()
+    item_id = id
     item = items.query.get_or_404(id)
+    form = AddItems()
     if form.validate_on_submit():
-        itemData = items(
-        name = form.name.data,
-        quantity = form.quantity.data,
-        units = form.units.data
-        )
-        db.session.delete(item)
-        db.session.add(itemData)
+        master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
+        db.session.delete(master_item)
         db.session.commit()
-        return redirect(url_for('/home'))
+        if str(items.query.filter(items.name == form.name.data).all()) == '[]':
+            itemsData = items(
+                name = form.name.data,
+                quantity = form.quantity.data,
+                units = form.units.data
+                )
+            db.session.add(itemsData)
+            db.session.commit()
+
+            masterData = master(user_id = current_user.id,
+            item_id = items.query.filter(items.name == form.name.data).first().id,
+            name = form.name.data,
+            quantity = form.quantity.data,
+            units = form.units.data)
+
+            db.session.add(masterData)
+            db.session.commit()
+            return redirect(url_for('home'))
     return render_template('update.html', title='Update', item=item, form=form)
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
