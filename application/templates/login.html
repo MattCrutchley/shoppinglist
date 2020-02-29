@@ -2,9 +2,11 @@
 
 {% extends "base.html" %}
 {% block body %}
+<div class="jumbotron text-center">
     <p1> login page </p1>
     <p>No account? Sign up</p>
-	<a href="{{ url_for('login') }}">Login</a>
+	<a href="{{ url_for('register') }}">Login</a>
+</div>	
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
