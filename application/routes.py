@@ -91,15 +91,15 @@ def update_item(id):
             db.session.add(itemsData)
             db.session.commit()
 
-            masterData = master(user_id = current_user.id,
-            item_id = items.query.filter(items.name == form.name.data).first().id,
-            name = form.name.data,
-            quantity = form.quantity.data,
-            units = form.units.data)
+        masterData = master(user_id = current_user.id,
+        item_id = items.query.filter(items.name == form.name.data).first().id,
+        name = form.name.data,
+        quantity = form.quantity.data,
+        units = form.units.data)
 
-            db.session.add(masterData)
-            db.session.commit()
-            return redirect(url_for('home'))
+        db.session.add(masterData)
+        db.session.commit()
+        return redirect(url_for('home'))
     return render_template('update.html', title='Update', item=item, form=form)
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
