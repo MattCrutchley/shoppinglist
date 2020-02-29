@@ -10,10 +10,25 @@
             {{ form.hidden_tag() }}
             {{ form.name.label }}
             {{ form.name }}
+	    {% if form.name.errors %}
+            	{% for error in form.name.errors %}
+                	 <span>{{ error }}</span>
+            	{% endfor %}
+            {% endif %}
             {{ form.quantity.label }}
             {{ form.quantity }}
-            {{ form.quantity.label }}
-            {{ form.quantity }}
+	     {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                         <span>{{ error }}</span>
+               	{% endfor %}
+            {% endif %}
+            {{ form.units.label }}
+            {{ form.units}}
+             {% if form.units.errors %}
+                {% for error in form.units.errors %}
+                         <span>{{ error }}</span>
+                {% endfor %}
+            {% endif %}	    
 	    {{ form.submit }}
 	
 

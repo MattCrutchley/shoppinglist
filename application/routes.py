@@ -79,9 +79,13 @@ def update_item(id):
     item = items.query.get_or_404(id)
     form = AddItems()
     if form.validate_on_submit():
+        print(form.errors)
+        return"test2"
         master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
+        return"test1"
         db.session.delete(master_item)
         db.session.commit()
+        return "test"
         if str(items.query.filter(items.name == form.name.data).all()) == '[]':
             itemsData = items(
                 name = form.name.data,
