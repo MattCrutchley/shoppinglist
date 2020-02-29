@@ -11,6 +11,7 @@ from sqlalchemy.sql import exists
 def home():
     if current_user.is_authenticated:
         form = AddItems()
+        username=current_user.username
         allitems = master.query.filter(master.user_id == current_user.id).all()
         if form.validate_on_submit():
             if str(items.query.filter(items.name == form.name.data).all()) == '[]':
@@ -33,7 +34,7 @@ def home():
             return redirect(url_for('home'))
         else:
             print(form.errors)
-        return render_template('home.html', title='home', list_=allitems,form=form)
+        return render_template('home.html', title='Shopping list', list_=allitems,form=form,username=username)
     else:
         return redirect(url_for('register'))
 
@@ -80,12 +81,9 @@ def update_item(id):
     form = AddItems()
     if form.validate_on_submit():
         print(form.errors)
-        return"test2"
         master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
-        return"test1"
         db.session.delete(master_item)
         db.session.commit()
-        return "test"
         if str(items.query.filter(items.name == form.name.data).all()) == '[]':
             itemsData = items(
                 name = form.name.data,
