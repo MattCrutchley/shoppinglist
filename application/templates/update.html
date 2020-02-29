@@ -5,8 +5,15 @@
 {% endblock %}
 
 {% block body %}
+<div class="jumbotron text-center">
+	<h1>Update item</h1> </br>
+	<h2>{{ item.name }} {{ item.quantity }} {{ item.units }} </h2>
+</div>
+
 <div class='form'>
 	<form action="/update/{{item.id}}" method="POST">
+	<table>
+		<tr>
             {{ form.hidden_tag() }}
             {{ form.name.label }}
             {{ form.name }}
@@ -28,8 +35,9 @@
                 {% for error in form.units.errors %}
                          <span>{{ error }}</span>
                 {% endfor %}
-            {% endif %}	    
-	    {{ form.submit }}
-	
+            {% endif %}	  
+	     {{ form.submit }}
+		</tr>
+	</table>
 
 {% endblock %}
