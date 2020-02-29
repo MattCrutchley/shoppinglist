@@ -3,6 +3,7 @@ from flask import render_template, redirect, url_for, request
 from application.forms import RegistrationForm, LoginForm, AddItems
 from application import app, db, bcrypt
 from application.models import items, users, master
+from sqlalchemy.sql import exists
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/home', methods=['GET','POST'])
@@ -12,13 +13,14 @@ def home():
         form = AddItems()
         allitems = master.query.filter(master.user_id == current_user.id).all()
         if form.validate_on_submit():
-            itemsData = items(
-                name = form.name.data,
-                quantity = form.quantity.data,
-                units = form.units.data
-                )
-            db.session.add(itemsData)
-            db.session.commit()
+            if str(items.query.filter(items.name == form.name.data).all()) == '[]':
+                itemsData = items(
+                    name = form.name.data,
+                    quantity = form.quantity.data,
+                    units = form.units.data
+                    )
+                db.session.add(itemsData)
+                db.session.commit()
 
             masterData = master(user_id = current_user.id,
             item_id = items.query.filter(items.name == form.name.data).first().id,
@@ -92,8 +94,9 @@ def update_item(id):
 def delete_item(id):
     item_id = id
     item = items.query.get_or_404(id)
-    master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).all()
+    master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
     db.session.delete(master_item)
+    db.session.commit()
     db.session.delete(item)
     db.session.commit()
-    return redirect(url_for('/home'))
+    return redirect(url_for('home'))

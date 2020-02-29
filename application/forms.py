@@ -3,7 +3,6 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField, Float
 from wtforms.validators import Required, Length, Email, EqualTo, ValidationError
 from application.models import users
 
-
 class AddItems(FlaskForm):
     name = StringField('name',
         validators = [
@@ -25,7 +24,11 @@ class AddItems(FlaskForm):
     )
 
     submit = SubmitField('add item')
-
+'''
+def validate_item(self, name):
+    if session.query(master.query.filter(master.name=item.name.data, user_id = current_user.id).exists()).scalar():
+        raise ValidationError('item already added')
+'''
 class RegistrationForm(FlaskForm):
     username = StringField('username',
         validators = [

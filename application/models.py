@@ -18,7 +18,7 @@ class users(db.Model, UserMixin):
 
 class items(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(50), nullable=False, unique = True)
     quantity = db.Column(db.Float)
     units = db.Column(db.String(30), nullable=False)
     
@@ -27,7 +27,7 @@ class items(db.Model):
 
     def __repr__(self):
         return ''.join([
-            'name: ', self.name, 'quantity', self.quantity, '\r\n','units ', self.units])
+            'name: ', self.name, 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])
 
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -36,7 +36,6 @@ class master(db.Model):
     name = db.Column(db.String(50), nullable=False)
     quantity = db.Column(db.Float)
     units = db.Column(db.String(30), nullable=False)
-
     def __repr__(self):
         return ''.join([
           'user_id',self.user_id,'\r\n','item_id',self.item_id,'\r\n',  'name: ', self.name,'\r\n', 'quantity', self.quantity, '\r\n','units ', self.units])     
