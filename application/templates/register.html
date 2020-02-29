@@ -1,8 +1,9 @@
 
 {% extends "base.html" %}
 {% block body %}
-    <p1> Registration page </p1>
-    <p>No account? Sign up</p>
+<div class="jumbotron text-center">
+    <h1> Registration page </h1>
+</div>
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
@@ -16,7 +17,7 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-            </div>
+            
                 {{ form.password.label }}
                 {{ form.password}}
                             {% if form.password.errors %}
@@ -26,7 +27,7 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-            </div>
+           
                 {{ form.confirm_password.label }}
                 {{ form.confirm_password}}
                         {% if form.confirm_password.errors %}
@@ -36,10 +37,10 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-            </div>
-                    </div>
-            </div>
-            <div class='form_group'>
+            
+                  
+           
+
                 {{ form.submit }}
             </div>
         </form>
