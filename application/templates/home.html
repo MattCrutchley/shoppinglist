@@ -8,16 +8,26 @@
 
 <div class="content">
     <h1 style="text-align: center">Shopping list</h1>
+    <table>
+        <table>
+                <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Units</th>
+                        <th>Actions</th>
+		</tr>
+
+
+
+
+
     {% if list_| length < 1 %}
-            </p> you have not added any items, add some below <p>
-	{% else %}		    
-	<table>
-		<tr>
-			<th>Item</th>
-			<th>Quantity</th>
-			<th>Units</th>
-			<th>Actions</th>
-		</tr>			
+
+
+	{% else %}
+
+
+
 	    {% for item in list_ %}
 		<tr>
       		<td>{{ item.name }}</td>
@@ -27,40 +37,47 @@
 		</tr>
 		<<!-- add delete and update here -->
 	{% endfor %}
-	</table>
 	
+	{%endif%}
 	
 	    <div class="form">
         <form action=' ' method="POST">
+			<tr>
+				<td>
 		{{ form.hidden_tag() }}
-		{{ form.name.label }}
 		{{ form.name }}
 		{% if form.name.errors %}
         	    {% for error in form.name.errors %}
                 	    <span>{{ error }}</span>
             	    {% endfor %}
                 {% endif %}
-		{{ form.quantity.label }}
+				</td>
+				<td>
 		{{ form.quantity }}
                 {% if form.quantity.errors %}
                     {% for error in form.quantity.errors %}
                             <span>{{ error }}</span>
                     {% endfor %}
-                {% endif %}		
-		{{ form.units.label }}
+                {% endif %}
+		</td>
+		<td>
 		{{ form.units }}
                 {% if form.units.errors %}
                     {% for error in form.units.errors %}
                             <span>{{ error }}</span>
                     {% endfor %}
-                {% endif %}		
+                {% endif %}
+		</td>
+		<td>
 		{{ form.submit }}
-
+		</td> 
+		</tr>
+		</table>
+		
         </form>
     </div>
 </div>
 
-	{%endif%}
 
 
 

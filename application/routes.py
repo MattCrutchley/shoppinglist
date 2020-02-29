@@ -28,7 +28,7 @@ def home():
                     
             db.session.add(masterData)
             db.session.commit()
-            return render_template('home.html', title='home', list_=allitems,form=form)
+            return redirect(url_for('home'))
         else:
             print(form.errors)
         return render_template('home.html', title='home', list_=allitems,form=form)
