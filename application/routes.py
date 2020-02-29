@@ -35,31 +35,6 @@ def home():
     else:
         return redirect(url_for('register'))
 
-
-
-
-
-
-'''
-#will need to be updated once the user model is added
-@app.route('/add', methods=['GET','POST'])
-def add():
-    form = additems()
-    if form.validate_on_submit():
-        itemsData = items(
-            name = form.name.data,
-            quantity = form.quantity.data,
-            units = form.units.data
-        )
-
-        db.session.add(itemsData)
-        db.session.commit()
-        return redirect(url_for('home'))
-    else:
-        print(form.errors)
-        
-    return render_template('add.html',title='additems',form=form)
-'''
 @app.route('/register',methods=['GET','POST'])
 def register():
     form = RegistrationForm()
@@ -94,3 +69,31 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('login'))
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update_item(id):
+    form = AddItems()
+    item = items.query.get_or_404(id)
+    if form.validate_on_submit():
+        itemData = items(
+        name = form.name.data,
+        quantity = form.quantity.data,
+        units = form.units.data
+        )
+        db.session.delete(item)
+        db.session.add(itemData)
+        db.session.commit()
+        return redirect(url_for('/home'))
+    return render_template('update.html', title='Update', item=item, form=form)
+
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete_item(id):
+    item_id = id
+    item = items.query.get_or_404(id)
+    master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).all()
+    db.session.delete(master_item)
+    db.session.delete(item)
+    db.session.commit()
+    return redirect(url_for('/home'))

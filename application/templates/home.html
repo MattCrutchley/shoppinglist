@@ -33,7 +33,11 @@
       		<td>{{ item.name }}</td>
         	<td>{{ item.quantity }}</td>
         	<td>{{ item.units }}</td>
-		<td>Update</td>
+		<td><a href ="/update/{{ item.id }}" > Update
+		<a href ="/delete/{{ item.id }}" > Delete
+		
+		
+		</td>
 		</tr>
 		<<!-- add delete and update here -->
 	{% endfor %}
