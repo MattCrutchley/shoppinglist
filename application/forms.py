@@ -6,12 +6,10 @@ from flask_login import current_user
 from application import db
 
 def unique_item():
-    message = 'items must be unique'
-
     def _unique_item(form,feild):
-        if str(master.query.filter(master.name == item.name.data, user_id == current_user.id).all()) != '[]':
+        if str(master.query.filter(master.name == feild.data, master.user_id == current_user.id).all()) != '[]':
             raise ValidationError('item already added')
-    return unique_item 
+    return _unique_item
 
 class AddItems(FlaskForm):
     name = StringField('name',
