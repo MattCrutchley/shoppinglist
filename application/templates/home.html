@@ -6,30 +6,28 @@
 
 {% block body %}
 
-<div class="content">
+<div class="jumbotron text-center">
 	<h1 style="text-align: center">{{ username }}'s shopping list</h1>
-    <table>
-        <table>
+</div>	
+<div>
+            <table>
+		<thead>    
                 <tr>
-                        <th>Item</th>
-                        <th>Quantity</th>
-                        <th>Units</th>
-                        <th>Actions</th>
+                        <th scope="col">Item</th>
+                        <th> scope="col">Quantity</th>
+                        <th> scope="col">Units</th>
+                        <th> scope="col">Actions</th>
 		</tr>
+		</thead>
+ {% if list_| length < 1 %}
+			</table>
+		    <p>You have no items in your list, add some above </p>
 
-
-
-
-
-    {% if list_| length < 1 %}
-
-
-	{% else %}
-
-
-
-	    {% for item in list_ %}
+{% else %}
+	{% for item in list_ %}
+		<tbody>   
 		<tr>
+			
       		<td>{{ item.name }}</td>
         	<td>{{ item.quantity }}</td>
         	<td>{{ item.units }}</td>
@@ -39,10 +37,9 @@
 		
 		</td>
 		</tr>
-		<<!-- add delete and update here -->
+		
 	{% endfor %}
-	
-	{%endif%}
+{%endif%}
 	
 	    <div class="form">
         <form action=' ' method="POST">
@@ -76,6 +73,7 @@
 		{{ form.submit }}
 		</td> 
 		</tr>
+		<t/body>
 		</table>
 		
         </form>
