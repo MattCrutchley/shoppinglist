@@ -17,8 +17,6 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-	    </div>
-            <div class='form_group'>	    
                 {{ form.password.label }}
                 {{ form.password}}
                             {% if form.password.errors %}
@@ -28,8 +26,6 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-	    </div>
-            <div class='form_group'>	    
                 {{ form.confirm_password.label }}
                 {{ form.confirm_password}}
                         {% if form.confirm_password.errors %}
@@ -39,8 +35,7 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-	    </div>
-                  
+		<div></div> 
            
 		<div class='form_group'>
                 {{ form.submit }}
