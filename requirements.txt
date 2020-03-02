@@ -37,3 +37,5 @@ Werkzeug==0.16.1
 wrapt==1.11.2
 WTForms==2.2.1
 zipp==3.0.0
+pytest==5.3.5
+pytest-cov==2.8.1

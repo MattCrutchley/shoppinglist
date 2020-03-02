@@ -1,13 +1,14 @@
 import unittest
 
+from application import app, db
 from flask import abort, url_for
-from flask_testing import TestCase
+from tests.db_test import TestBase
 
-class TestViews(TestCase):
+class TestRoutes(TestBase):
 
     def test_redirect_logout(self):
-        assertRedirects('/logout','login')
+        assertRedirect('login','logout')
     
     #Test that home redirects to register without login
     def  test_redirect_home(self):
-        assertRedirects('/home','/Register')
+        assertRedirect('/home','/Register')
