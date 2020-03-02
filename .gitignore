@@ -1,4 +1,4 @@
-~/shoppinglist/venv/
+~/shoppinglist/venv/*
 ~/shoppinglist/__pycache__/*
 ~/shoppinglist/application/__pycache__/*
 ~/shoppinglist/*swp
