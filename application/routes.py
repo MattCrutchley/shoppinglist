@@ -94,13 +94,13 @@ def update_item(item_id,list_id):
 @app.route('/delete/<int:item_id>/<int:list_id>', methods=['GET', 'POST'])
 @login_required
 def delete_item(item_id,list_id):
-    item = items.query.filter(items.id==id).first()
+    item = items.query.filter(items.id==item_id).first()
     master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id, master.list_id == list_id).first()
     db.session.delete(master_item)
     db.session.commit()
     db.session.delete(item)
     db.session.commit()
-    return redirect(url_for('lists',id = item_id))
+    return redirect(url_for('lists',list_id = list_id))
 
 @app.route('/lists/<int:list_id>', methods=['GET','POST'])
 @login_required
