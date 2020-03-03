@@ -135,3 +135,44 @@ def lists(id):
             db.session.commit()
             return redirect(url_for('lists',id = list_id))
         return render_template('lists.html', title='lists', list_=allitems,form=form,listname=lists_.query.filter(lists_.id == id).first())
+
+
+
+@app.route('/updatelist/<int:id>', methods=['GET', 'POST'])
+@login_required
+def update_list(id):
+    list_id = id
+    list_ = lists_.query.filter(lists_.id==id).first()
+    form = CreateList()
+    if form.validate_on_submit():
+        print(form.errors)
+        master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).first()
+        db.session.delete(master_list)
+        db.session.commit()
+        if str(lists_.query.filter(lists_.name == form.name.data).all()) == '[]':
+            listData = lists_(
+                name = form.name.data,
+                )
+            db.session.add(itemsData)
+            db.session.commit()
+
+        masterData = master(user_id = current_user.id,
+        list_id = lists_.query.filter(lists_.name == form.name.data).first().id,
+        name = form.name.data,
+        )
+        db.session.add(masterData)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('updatelist.html', title='Update',list_ = list_, form=form)
+
+@app.route('/deletelist/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete_list(id):
+    list_id = id
+    list_ = lists_.query.filter(lists_.id==id).first()
+    master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).first()
+    db.session.delete(master_list)
+    db.session.commit()
+    db.session.delete(list_)
+    db.session.commit()
+    return redirect(url_for('home'))    
