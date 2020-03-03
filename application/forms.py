@@ -16,7 +16,7 @@ class AddItems(FlaskForm):
         validators = [
             Required(),
             Length(min=2, max=50),
-            unique_item()
+            #unique_item()
         ]
     )
     quantity = FloatField('quantity',

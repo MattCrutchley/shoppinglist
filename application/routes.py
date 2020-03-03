@@ -65,11 +65,10 @@ def logout():
 @app.route('/update/<int:item_id>/<int:list_id>', methods=['GET', 'POST'])
 @login_required
 def update_item(item_id,list_id):
-    item = items.query.filter(items.id==item_id).first()
+    master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id, master.list_id == list_id).first()
     form = AddItems()
     if form.validate_on_submit():
         print(form.errors)
-        master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id, master.list_id == list_id).first()
         db.session.delete(master_item)
         db.session.commit()
         if str(items.query.filter(items.name == form.name.data).all()) == '[]':
@@ -87,11 +86,10 @@ def update_item(item_id,list_id):
         name = form.name.data,
         quantity = form.quantity.data,
         units = form.units.data)
-
         db.session.add(masterData)
         db.session.commit()
-        return redirect(url_for('lists',id = list_id))
-    return render_template('update.html', title='Update', item=item, form=form)
+        return redirect(url_for('lists',list_id = list_id))
+    return render_template('update.html', title='Update', item=master_item, form=form)
 
 @app.route('/delete/<int:item_id>/<int:list_id>', methods=['GET', 'POST'])
 @login_required

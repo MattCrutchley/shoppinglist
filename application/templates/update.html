@@ -11,7 +11,7 @@
 </div>
 
 <div class='form'>
-	<form action="/update/{{item.id}}" method="POST">
+	<form action="/update/{{ item.item_id }}/{{ item.list_id }}" method="POST">
 	<table>
 		<tr>
             {{ form.hidden_tag() }}
