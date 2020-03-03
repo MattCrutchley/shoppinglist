@@ -62,15 +62,14 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-@app.route('/update/<int:id>', methods=['GET', 'POST'])
+@app.route('/update/<int:item_id>/<int:list_id>', methods=['GET', 'POST'])
 @login_required
-def update_item(id):
-    item_id = id
-    item = items.query.filter(items.id==id).first()
+def update_item(item_id,list_id):
+    item = items.query.filter(items.id==item_id).first()
     form = AddItems()
     if form.validate_on_submit():
         print(form.errors)
-        master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
+        master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id, master.list_id == list_id).first()
         db.session.delete(master_item)
         db.session.commit()
         if str(items.query.filter(items.name == form.name.data).all()) == '[]':
@@ -83,6 +82,7 @@ def update_item(id):
             db.session.commit()
 
         masterData = master(user_id = current_user.id,
+        list_id = list_id,
         item_id = items.query.filter(items.name == form.name.data).first().id,
         name = form.name.data,
         quantity = form.quantity.data,
@@ -90,29 +90,27 @@ def update_item(id):
 
         db.session.add(masterData)
         db.session.commit()
-        return redirect(url_for('lists',id = item_id))
+        return redirect(url_for('lists',id = list_id))
     return render_template('update.html', title='Update', item=item, form=form)
 
-@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+@app.route('/delete/<int:item_id>/<int:list_id>', methods=['GET', 'POST'])
 @login_required
-def delete_item(id):
-    item_id = id
+def delete_item(item_id,list_id):
     item = items.query.filter(items.id==id).first()
-    master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id).first()
+    master_item = master.query.filter(master.user_id == current_user.id, master.item_id == item_id, master.list_id == list_id).first()
     db.session.delete(master_item)
     db.session.commit()
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for('lists',id = item_id))
 
-@app.route('/lists/<int:id>', methods=['GET','POST'])
+@app.route('/lists/<int:list_id>', methods=['GET','POST'])
 @login_required
-def lists(id):
+def lists(list_id):
     if current_user.is_authenticated:
         form = AddItems()
-        list_id = id
         username=current_user.username
-        allitems = master.query.filter(master.user_id == current_user.id,list_id == list_id).all()
+        allitems = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).all()
         if form.validate_on_submit():
             if str(items.query.filter(items.name == form.name.data).all()) == '[]':
                 itemsData = items(
@@ -133,8 +131,8 @@ def lists(id):
 
             db.session.add(masterData)
             db.session.commit()
-            return redirect(url_for('lists',id = list_id))
-        return render_template('lists.html', title='lists', list_=allitems,form=form,listname=lists_.query.filter(lists_.id == id).first())
+            return redirect(url_for('lists',list_id = list_id))
+        return render_template('lists.html', title='lists', list_=allitems,form=form,listname=lists_.query.filter(lists_.id == list_id).first())
 
 
 
@@ -171,8 +169,9 @@ def delete_list(id):
     list_id = id
     list_ = lists_.query.filter(lists_.id==id).first()
     master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).all()
-    db.session.delete(master_list)
-    db.session.commit()
+    if str(master_list) != '[]':
+        db.session.delete(master_list)
+        db.session.commit()
     db.session.delete(list_)
     db.session.commit()
-    return redirect(url_for('home'))    
+    return redirect(url_for('home'))   

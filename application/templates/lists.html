@@ -30,8 +30,9 @@
       		<td>{{ item.name }}</td>
         	<td>{{ item.quantity }}</td>
         	<td>{{ item.units }}</td>
-		<td><a href ="/update/{{ item.item_id }}" > Update </br>
-		<a href ="/delete/{{ item.item_id }}" > Delete
+		<td><a href ="/update/{{ item.item_id }}/{{ item.list_id}}" > Update </br>
+			<a href ="/delete/{{ item.item_id }}/{{ item.list_id}}" > Delete
+
 		
 		
 		</td>
