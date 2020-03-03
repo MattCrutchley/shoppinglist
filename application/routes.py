@@ -90,7 +90,7 @@ def update_item(id):
 
         db.session.add(masterData)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('lists',id = item_id))
     return render_template('update.html', title='Update', item=item, form=form)
 
 @app.route('/delete/<int:id>', methods=['GET', 'POST'])
@@ -103,11 +103,11 @@ def delete_item(id):
     db.session.commit()
     db.session.delete(item)
     db.session.commit()
-    return redirect(url_for('home'))
+    return redirect(url_for('lists',id = item_id))
 
-@app.route('/list/<int:id>', methods=['GET','POST'])
+@app.route('/lists/<int:id>', methods=['GET','POST'])
 @login_required
-def lists():
+def lists(id):
     if current_user.is_authenticated:
         form = AddItems()
         list_id = id
@@ -133,5 +133,5 @@ def lists():
 
             db.session.add(masterData)
             db.session.commit()
-            return redirect(url_for('list'))
-        return render_template('list.html', title='lists', list_=allitems,form=form,username=username)                                     
+            return redirect(url_for('lists',id = list_id))
+        return render_template('lists.html', title='lists', list_=allitems,form=form,username=username)                                     
