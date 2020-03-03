@@ -7,31 +7,27 @@
 {% block body %}
 
 <div class="jumbotron text-center">
-	<h1 style="text-align: center">{{ username }}'s shopping list</h1>
+	<h1 style="text-align: center">{{ username }}'s shopping lists</h1>
 </div>	
 <div>
             <table align="center">
 		<thead>    
                 <tr>
-                        <th scope="col">Item</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Units</th>
+                        <th scope="col">List</th>
                         <th scope="col">Actions</th>
 		</tr>
 		</thead>
  {% if list_| length < 1 %}
-		    <p class="text-center">You have no items in your list, add some below. </p>
+		    <p class="text-center">You have no lists add some below. </p>
 
 {% else %}
-	{% for item in list_ %}
+	{% for list in list_ %}
 		<tbody>   
 		<tr>
 			
-      		<td>{{ item.name }}</td>
-        	<td>{{ item.quantity }}</td>
-        	<td>{{ item.units }}</td>
-		<td><a href ="/update/{{ item.item_id }}" > Update </br>
-		<a href ="/delete/{{ item.item_id }}" > Delete
+      		<td>{{ list.name }}</td>
+		<td><a href ="/updatelist/{{ list.list_id }}" > Update </br>
+		<a href ="/deletelist/{{ list.list_id }}" > Delete
 		
 		
 		</td>
@@ -52,31 +48,6 @@
             	    {% endfor %}
                 {% endif %}
 				</td>
-				<td>
-		{{ form.quantity }}
-                {% if form.quantity.errors %}
-                    {% for error in form.quantity.errors %}
-                            <span>{{ error }}</span>
-                    {% endfor %}
-                {% endif %}
-		</td>
-		<td>
-		{{ form.units }}
-                {% if form.units.errors %}
-                    {% for error in form.units.errors %}
-                            <span>{{ error }}</span>
-                    {% endfor %}
-                {% endif %}
-		</td>
-		<td>
-		{{ form.submit }}
-		</td> 
-		</tr>
-		<t/body>
-		</table>
-		
-        </form>
-    </div>
 </div>
 
 

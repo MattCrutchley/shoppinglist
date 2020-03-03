@@ -134,4 +134,4 @@ def lists():
             db.session.add(masterData)
             db.session.commit()
             return redirect(url_for('list'))
-        return render_template('list.html', title='Shopping list', list_=allitems,form=form,username=username)-- INSERT --                                       
+        return render_template('list.html', title='lists', list_=allitems,form=form,username=username)                                     

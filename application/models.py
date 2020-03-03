@@ -35,8 +35,7 @@ class lists(db.Model):
     name = db.Column(db.String(50), nullable=False, unique = True)
 
     def __repr__(self):
-    return ''.join(['id:',str(self.id),'\r\n','user_id',str(self.user_id),'\r\n',
-           'name: ', self.name])
+        return ''.join(['id:',str(self.id),'\r\n','user_id',str(self.user_id),'\r\n','name: ', self.name])
 
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)

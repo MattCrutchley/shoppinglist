@@ -34,13 +34,13 @@ class AddItems(FlaskForm):
 
     submit = SubmitField('add item')
 
-class CreateList
+class CreateList(FlaskForm):
     
-        name = StringField('name',
-        validators = [
-            Required(),
-            Length(min=2, max=50),
-            unique_item()
+    name = StringField('name',
+    validators = [
+        Required(),
+        Length(min=2, max=50),
+        unique_item()
         ]
     )
 
