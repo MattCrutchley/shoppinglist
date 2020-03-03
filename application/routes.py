@@ -134,4 +134,4 @@ def lists(id):
             db.session.add(masterData)
             db.session.commit()
             return redirect(url_for('lists',id = list_id))
-        return render_template('lists.html', title='lists', list_=allitems,form=form,username=username)                                     
+        return render_template('lists.html', title='lists', list_=allitems,form=form,listname=lists_.query.filter(lists_.id == id))
