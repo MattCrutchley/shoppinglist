@@ -39,7 +39,7 @@ class lists_(db.Model):
 
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    list_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    list_id = db.Column(db.Integer, db.ForeignKey('lists_.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
     name = db.Column(db.String(50), nullable=False)
