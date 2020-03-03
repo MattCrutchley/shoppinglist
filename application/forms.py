@@ -34,6 +34,21 @@ class AddItems(FlaskForm):
 
     submit = SubmitField('add item')
 
+class CreateList
+    
+        name = StringField('name',
+        validators = [
+            Required(),
+            Length(min=2, max=50),
+            unique_item()
+        ]
+    )
+
+    submit = SubmitField('create list')
+
+
+
+
 class RegistrationForm(FlaskForm):
     username = StringField('username',
         validators = [

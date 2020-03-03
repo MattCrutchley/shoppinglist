@@ -10,31 +10,20 @@ from sqlalchemy.sql import exists
 @login_required
 def home():
     if current_user.is_authenticated:
-        form = AddItems()
+        form = CreateList()
         username=current_user.username
-        allitems = master.query.filter(master.user_id == current_user.id).all()
+        alllists = lists.query.filter(lists.user_id == current_user.id).all()
         if form.validate_on_submit():
-            if str(items.query.filter(items.name == form.name.data).all()) == '[]':
-                itemsData = items(
-                    name = form.name.data,
-                    quantity = form.quantity.data,
-                    units = form.units.data
-                    )
-                db.session.add(itemsData)
-                db.session.commit()
 
-            masterData = master(user_id = current_user.id,
-            item_id = items.query.filter(items.name == form.name.data).first().id,
-            name = form.name.data,
-            quantity = form.quantity.data,
-            units = form.units.data)
+            listData = lists(user_id = current_user.id,
+            name = form.name.data)
                     
-            db.session.add(masterData)
+            db.session.add(listData)
             db.session.commit()
             return redirect(url_for('home'))
         else:
             print(form.errors)
-        return render_template('home.html', title='Shopping list', list_=allitems,form=form,username=username)
+        return render_template('home.html', title='Shopping list', list_=alllists,form=form,username=username)
     else:
         return redirect(url_for('register'))
 
@@ -115,3 +104,34 @@ def delete_item(id):
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for('home'))
+
+@app.route('/list/<int:id>', methods=['GET','POST'])
+@login_required
+def lists():
+    if current_user.is_authenticated:
+        form = AddItems()
+        list_id = id
+        username=current_user.username
+        allitems = master.query.filter(master.user_id == current_user.id,list_id == list_id).all()
+        if form.validate_on_submit():
+            if str(items.query.filter(items.name == form.name.data).all()) == '[]':
+                itemsData = items(
+                    
+                    name = form.name.data,
+                    quantity = form.quantity.data,
+                    units = form.units.data
+                    )
+                db.session.add(itemsData)
+                db.session.commit()
+
+            masterData = master(list_id = list_id,
+            user_id = current_user.id,
+            item_id = items.query.filter(items.name == form.name.data).first().id,
+            name = form.name.data,
+            quantity = form.quantity.data,
+            units = form.units.data)
+
+            db.session.add(masterData)
+            db.session.commit()
+            return redirect(url_for('list'))
+        return render_template('list.html', title='Shopping list', list_=allitems,form=form,username=username)-- INSERT --                                       
