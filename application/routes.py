@@ -112,7 +112,7 @@ def lists(id):
         form = AddItems()
         list_id = id
         username=current_user.username
-        allitems = master.query.filter(master.user_id == current_user.id,list_id == list_id).first()
+        allitems = master.query.filter(master.user_id == current_user.id,list_id == list_id).all()
         if form.validate_on_submit():
             if str(items.query.filter(items.name == form.name.data).all()) == '[]':
                 itemsData = items(
