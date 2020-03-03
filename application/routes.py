@@ -112,7 +112,7 @@ def lists(id):
         form = AddItems()
         list_id = id
         username=current_user.username
-        allitems = master.query.filter(master.user_id == current_user.id,list_id == list_id).all()
+        allitems = master.query.filter(master.user_id == current_user.id,list_id == list_id).first()
         if form.validate_on_submit():
             if str(items.query.filter(items.name == form.name.data).all()) == '[]':
                 itemsData = items(
@@ -146,14 +146,14 @@ def update_list(id):
     form = CreateList()
     if form.validate_on_submit():
         print(form.errors)
-        master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).first()
+        master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).all()
         db.session.delete(master_list)
         db.session.commit()
         if str(lists_.query.filter(lists_.name == form.name.data).all()) == '[]':
             listData = lists_(
                 name = form.name.data,
                 )
-            db.session.add(itemsData)
+            db.session.add(listData)
             db.session.commit()
 
         masterData = master(user_id = current_user.id,
@@ -163,14 +163,14 @@ def update_list(id):
         db.session.add(masterData)
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template('updatelist.html', title='Update',list_ = list_, form=form)
+    return render_template('updatelist.html', title='Update list',list_ = list_, form=form)
 
 @app.route('/deletelist/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_list(id):
     list_id = id
     list_ = lists_.query.filter(lists_.id==id).first()
-    master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).first()
+    master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).all()
     db.session.delete(master_list)
     db.session.commit()
     db.session.delete(list_)
