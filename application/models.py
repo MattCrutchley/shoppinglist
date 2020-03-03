@@ -47,7 +47,7 @@ class master(db.Model):
     units = db.Column(db.String(30), nullable=False)
     def __repr__(self):
         return ''.join([
-            'list_id',str(self.list_id),'user_id',str(self.user_id),'\r\n','item_id',str(self.item_id),'\r\n',  'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', self.units])     
+            'list_id',str(self.list_id),'user_id',str(self.user_id),'\r\n','item_id',str(self.item_id),'\r\n',  'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])     
        
         
 
