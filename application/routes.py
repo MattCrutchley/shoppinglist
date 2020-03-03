@@ -1,8 +1,8 @@
 from flask_login import login_user, current_user, logout_user, login_required
 from flask import render_template, redirect, url_for, request
-from application.forms import RegistrationForm, LoginForm, AddItems
+from application.forms import RegistrationForm, LoginForm, AddItems, CreateList
 from application import app, db, bcrypt
-from application.models import items, users, master
+from application.models import items, users, master,lists_
 from sqlalchemy.sql import exists
 
 @app.route('/', methods=['GET','POST'])
@@ -12,10 +12,10 @@ def home():
     if current_user.is_authenticated:
         form = CreateList()
         username=current_user.username
-        alllists = lists.query.filter(lists.user_id == current_user.id).all()
+        alllists = lists_.query.filter(lists_.user_id == current_user.id).all()
         if form.validate_on_submit():
 
-            listData = lists(user_id = current_user.id,
+            listData = lists_(user_id = current_user.id,
             name = form.name.data)
                     
             db.session.add(listData)

@@ -29,7 +29,7 @@ class items(db.Model):
         return ''.join(['id:',str(self.id),'\r\n'
             'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])
 
-class lists(db.Model):
+class lists_(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     name = db.Column(db.String(50), nullable=False, unique = True)
