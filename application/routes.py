@@ -132,8 +132,6 @@ def lists(list_id):
             return redirect(url_for('lists',list_id = list_id))
         return render_template('lists.html', title='lists', list_=allitems,form=form,listname=lists_.query.filter(lists_.id == list_id).first())
 
-
-
 @app.route('/updatelist/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_list(id):
@@ -161,13 +159,14 @@ def update_list(id):
         return redirect(url_for('home'))
     return render_template('updatelist.html', title='Update list',list_ = list_, form=form)
 
-@app.route('/deletelist/<int:id>', methods=['GET', 'POST'])
+@app.route('/deletelist/<int:list_id>', methods=['GET', 'POST'])
 @login_required
-def delete_list(id):
-    list_id = id
-    list_ = lists_.query.filter(lists_.id==id).first()
+def delete_list(list_id):
+    list_ = lists_.query.filter(lists_.id==list_id).first()
     master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).all()
     if str(master_list) != '[]':
+        if len(master_list) < 2:
+            master_list = master.query.filter(master.user_id == current_user.id, master.list_id == list_id).one()        
         db.session.delete(master_list)
         db.session.commit()
     db.session.delete(list_)
