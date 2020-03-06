@@ -31,7 +31,7 @@ the users table has a one to many relationship with the master table as users wi
 the master table has been implemented to allow the app to query a database that contains both the user_id and the item_id this makes it possible to return only the items associated with the user that is currently logged in.
 
 #### Sprint 2
-
+![ERD](images/Sprint2_ERD.png)
 #### Sprint 3
 
 ### Frontend
