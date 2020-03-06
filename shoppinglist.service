@@ -2,9 +2,9 @@
 Description=Flask Application
 [Service]
 User=pythonadm
-WorkingDirectory=/opt/flask-app
+WorkingDirectory=/opt/shoppinglist
 ExecStart=/bin/bash \
-	-c 'cd /opt/flask-app && \
+	-c 'cd /opt/shoppinglist && \
 	source ./venv/bin/activate && \
 	python ./app.py'
 Environment=SECRET_KEY={{SECRET_KEY}}
