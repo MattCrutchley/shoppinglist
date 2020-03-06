@@ -34,6 +34,6 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 
 ### Deployment
 
-please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/Risk_assesment.png) for a higher resolution image
+please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/CI_pipline.png) for a higher resolution image
 
 ![CI pipeline](images/CI_pipline.png)
