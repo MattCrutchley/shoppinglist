@@ -1,7 +1,6 @@
-~/shoppinglist/venv/*
-~/shoppinglist/venv/
-~/shoppinglist/__pycache__/*
-~/shoppinglist/application/__pycache__/*
-~/shoppinglist/*swp
-~/shoppinglist/application/*swp
-/home/matt/shoppinglist/tests/__pycache__/*
+/venv/*
+/__pycache__/*
+/application/__pycache__/*
+/*swp
+/application/*swp
+/tests/__pycache__/*
