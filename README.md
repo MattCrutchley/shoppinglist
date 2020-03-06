@@ -49,6 +49,7 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 ### Deployment
 The app was deployed to azure using jenkins as a CI server, the data is stored in an azure managed database, webhooks on git hub trigger jenkins running a series of tests on a seperate VM, if these are sucsessful another jenkins job will then run to redeploy the application.
 
+please click [here]((https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg) for a higher resolution image
 
-![CI pipeline](images/CI_pipeline.jpeg)
+![CI pipeline](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg)
 
