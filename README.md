@@ -36,8 +36,13 @@ the master table has been implemented to allow the app to query a database that 
 During Sprint 2 the Lists_ table was added to the database model in order to allow each user create multiple shopping lists the table structure works similarly to the previous two tables in that the the lists table stores the name of each listy once however may instances of each list id can appear in the master table which is ultimatley quereied in order to display the correct information on the webpage at any given time.
 
 #### Sprint 3
+![ERD](images/Sprint2_ERD.png)
+
+Plans for the third sprint were to add a meals table, this would allow the development of functionality that would allow users to add meals to the app and then add all the ingredients for any given meal to the shoppinglist in one click. unique instances of each mealname would be stored in the meals table and then multiple instances of this meal id could appear in the master table if more than one user had the same meal name.
 
 ### Frontend
+
+the front end of the app was written in HTML with bootstrapp used for formatting, flasks jinja2 syntax was used in order to communicate information between the front end of the app and the python scriptfor instance in order to show each item on a users list, the databse is queried to return all entries that have the users user_id and the list_id of the list currently being viewed. this is then passed as a variable through flask's render_template() function. the lists using jinja2 a for loop is created on the list HTML page to iterate through each item that was returned from the query.
 
 
 
