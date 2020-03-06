@@ -34,4 +34,4 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 
 ### Deployment
 
-![CI pipeline](images/CI pipline.png)
+![CI pipeline](images/CI_pipline.png)
