@@ -36,7 +36,7 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
  
 please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/CI_pipline.png) for a higher resolution image
 
-![CI_pipeline](CI_pipeline.png)
+![CI_pipeline](images/CI_pipeline.png)
 
 the codebase is for the app written in python flask and HTML with some bootstrapp used for formatting the webpages. the git VCS was used to store the remote repositories. additional branches where created at the end of each sprint.
 
