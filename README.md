@@ -32,6 +32,9 @@ the master table has been implemented to allow the app to query a database that 
 
 #### Sprint 2
 ![ERD](images/Sprint2_ERD.png)
+
+During Sprint 2 the Lists_ table was added to the database model in order to allow each user create multiple shopping lists the table structure works similarly to the previous two tables in that the the lists table stores the name of each listy once however may instances of each list id can appear in the master table which is ultimatley quereied in order to display the correct information on the webpage at any given time.
+
 #### Sprint 3
 
 ### Frontend
