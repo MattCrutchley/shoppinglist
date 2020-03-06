@@ -32,3 +32,6 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 
 ![Risk assesment](images/Risk_assesment.png)
 
+### Deployment
+The app was deployed to azure using jenkins as a CI server, the data is stored in an azure managed database, webhooks on git hub trigger jenkins running a series of tests on a seperate VM, if these are sucsessful another jenkins job will then run to redeploy the application.
+
