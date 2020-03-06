@@ -42,7 +42,7 @@ Plans for the third sprint were to add a meals table, this would allow the devel
 
 ### Frontend
 
-the front end of the app was written in HTML with bootstrapp used for formatting, flasks jinja2 syntax was used in order to communicate information between the front end of the app and the python scriptfor instance in order to show each item on a users list, the databse is queried to return all entries that have the users user_id and the list_id of the list currently being viewed. this is then passed as a variable through flask's render_template() function. the lists using jinja2 a for loop is created on the list HTML page to iterate through each item that was returned from the query.
+the front end of the app was written in HTML with bootstrapp used for formatting, flasks jinja2 syntax was used in order to communicate information between the front end of the app and the python scriptfor instance in order to show each item on a users list, the databse is queried to return all entries that have the users user_id and the list_id of the list currently being viewed. this is then passed as a variable through flask's render_template() function. Using a jinja2 for loop the list is created on the list HTML page by iterating through each item that was returned from the query.
 
 
 
