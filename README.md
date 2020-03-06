@@ -32,3 +32,6 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 
 ![Risk assesment](images/Risk_assesment.png)
 
+### Deployment
+
+![CI pipeline](images/CI pipline.png)
