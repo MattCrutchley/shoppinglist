@@ -131,7 +131,7 @@ def lists(list_id):
             db.session.commit()
             return redirect(url_for('lists',list_id = list_id))
         return render_template('lists.html', title='lists', list_=allitems,form=form,listname=lists_.query.filter(lists_.id == list_id).first())
-
+'''
 @app.route('/updatelist/<int:id>', methods=['GET', 'POST'])
 @login_required
 def update_list(id):
@@ -158,7 +158,7 @@ def update_list(id):
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('updatelist.html', title='Update list',list_ = list_, form=form)
-
+'''
 @app.route('/deletelist/<int:list_id>', methods=['GET', 'POST'])
 @login_required
 def delete_list(list_id):
