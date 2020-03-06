@@ -16,7 +16,9 @@
         	    {% for error in form.username.errors %}
                 	    <span>{{ error }}</span>
             	    {% endfor %}
-                {% endif %}		
+                {% endif %}
+	      </div >
+	      <div class='form_group'>
                 {{ form.password.label }}
                 {{ form.password}}
 		{% if form.password.errors %}
