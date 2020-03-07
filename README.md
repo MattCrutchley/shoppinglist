@@ -22,23 +22,23 @@ at present I have completed the second sprint and made plans for the third.
 ### Backend
 
 #### Sprint 1
-in order to sore the information in the shopping list I created three mySQL databases these are related as according to the following ERD diagram:
+In order to sore the information in the shopping list I created three mySQL databases these are related as according to the following ERD diagram:
 
 ![ERD](images/ERD_diagram.draw.io.png)
 
-the users table has a one to many relationship with the master table as users will be stored once in the users table and must exist in the users table in order to exist in the master table however there will be multiple instances of each user in the master table (one for each item). Likewise there will only be one instance of each item in the items table but there can be may instances of the same item in the masters table as they may relate to different users.
+The users table has a one to many relationship with the master table as users will be stored once in the users table and must exist in the users table in order to exist in the master table however there will be multiple instances of each user in the master table (one for each item). Likewise there will only be one instance of each item in the items table but there can be may instances of the same item in the masters table as they may relate to different users.
 
 the master table has been implemented to allow the app to query a database that contains both the user_id and the item_id this makes it possible to return only the items associated with the user that is currently logged in.
 
 #### Sprint 2
 ![ERD](images/Sprint2_ERD.png)
 
-During Sprint 2 the Lists_ table was added to the database model in order to allow each user create multiple shopping lists the table structure works similarly to the previous two tables in that the the lists table stores the name of each listy once however may instances of each list id can appear in the master table which is ultimatley quereied in order to display the correct information on the webpage at any given time.
+During Sprint 2 the Lists_ table was added to the database model in order to allow each user create multiple shopping lists the table structure works similarly to the previous two tables in that the the lists table stores the name of each list once however many instances of each list id can appear in the master table which is ultimately queried in order to display the correct information on the webpage at any given time.
 
 #### Sprint 3
 ![ERD](images/Sprint2_ERD.png)
 
-Plans for the third sprint were to add a meals table, this would allow the development of functionality that would allow users to add meals to the app and then add all the ingredients for any given meal to the shoppinglist in one click. unique instances of each mealname would be stored in the meals table and then multiple instances of this meal id could appear in the master table if more than one user had the same meal name.
+Plans for the third sprint were to add a meals table, this would allow the development of functionality that would allow users to add meals to the app and then add all the ingredients for any given meal to the shopping list in one click. unique instances of each mealname would be stored in the meals table and then multiple instances of this meal id could appear in the master table if more than one user had the same meal name.
 
 ### Frontend
 
@@ -55,7 +55,7 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 ![Risk assesment](images/Risk_assesment.png)
 
 ### Deployment
-The app was deployed to azure using jenkins as a CI server, the data is stored in an azure managed database, webhooks on git hub trigger jenkins running a series of tests on a seperate VM, if these are sucsessful another jenkins job will then run to redeploy the application.
+The app was deployed to Azure using Jenkins as a CI server, the data is stored in an Azure managed database, webhooks on git hub trigger Jenkins running a series of tests on a seperate VM, if these are sucsessful another Jenkins job will then run to redeploy the application.
 
 please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg) for a higher resolution image
 
