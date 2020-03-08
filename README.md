@@ -62,6 +62,6 @@ please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilis
 ![CI pipeline](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg)
 
 ### Cloud infrastructure
-please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infrastructure.jpg) for a higher resolution image
-![Cloud infrastructure](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infrastructure.jpg)
+please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png.jpg) for a higher resolution image
+![Cloud infrastructure](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png.jpg)
 
