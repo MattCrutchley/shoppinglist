@@ -36,7 +36,7 @@ the master table has been implemented to allow the app to query a database that 
 During Sprint 2 the Lists_ table was added to the database model in order to allow each user create multiple shopping lists the table structure works similarly to the previous two tables in that the the lists table stores the name of each list once however many instances of each list id can appear in the master table which is ultimately queried in order to display the correct information on the webpage at any given time.
 
 #### Sprint 3
-![ERD](images/Sprint2_ERD.png)
+![ERD](images/Sprint3_ERD.png)
 
 Plans for the third sprint were to add a meals table, this would allow the development of functionality that would allow users to add meals to the app and then add all the ingredients for any given meal to the shopping list in one click. unique instances of each mealname would be stored in the meals table and then multiple instances of this meal id could appear in the master table if more than one user had the same meal name.
 
