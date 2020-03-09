@@ -12,7 +12,7 @@ initially I created user stories of what I would like the app to do from this, I
 
 The project was divided into three sprints, the first sprint covering the requirements outlined in the breif for a minimum required product this app would have functionality for users to log in, create and update one shoppinglist each.
 
-the second sprint would allow users to create multiple shopping lists each.
+The second sprint would allow users to create multiple shopping lists each.
 
 The third sprint would allow users to add meals to another table and add all the ingredients for each meal to a selected shopping list in one click.
 
@@ -28,7 +28,7 @@ In order to sore the information in the shopping list I created three mySQL data
 
 The users table has a one to many relationship with the master table as users will be stored once in the users table and must exist in the users table in order to exist in the master table however there will be multiple instances of each user in the master table (one for each item). Likewise there will only be one instance of each item in the items table but there can be may instances of the same item in the masters table as they may relate to different users.
 
-the master table has been implemented to allow the app to query a database that contains both the user_id and the item_id this makes it possible to return only the items associated with the user that is currently logged in.
+The master table has been implemented to allow the app to query a database that contains both the user_id and the item_id this makes it possible to return only the items associated with the user that is currently logged in.
 
 #### Sprint 2
 ![ERD](images/Sprint2_ERD.png)
@@ -50,17 +50,17 @@ The front end of the app was written in HTML with bootstrapp used for formatting
 
 The below risks have been taken into account prior to the development of the app and have been mitigated where possible.
 
-please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/Risk_assesment.png) for a higher resolution image
+Please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/images/Risk_assesment.png) for a higher resolution image
 
 ![Risk assesment](images/Risk_assesment.png)
 
 ### Deployment
 The app was deployed to Azure using Jenkins as a CI server, the data is stored in an Azure managed database, webhooks on github trigger Jenkins running a series of tests on a seperate VM, if these are sucsessful another Jenkins job will then run to redeploy the application.
 
-please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg) for a higher resolution image
+Please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg) for a higher resolution image
 
 ![CI pipeline](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg)
 
-please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png) for a higher resolution image
+Please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png) for a higher resolution image
 ![Cloud infrastructure](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png)
 
