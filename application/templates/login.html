@@ -3,7 +3,7 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="jumbotron text-center">
-    <h1> login page </h1>
+    <h1> Login Page </h1>
 	<p>No account? <a href="{{ url_for('register') }}"> Sign up</a></p>
 </div>	
     <div class='form'>
@@ -16,7 +16,9 @@
         	    {% for error in form.username.errors %}
                 	    <span>{{ error }}</span>
             	    {% endfor %}
-                {% endif %}		
+                {% endif %}
+	      </div >
+	      <div class='form_group'>
                 {{ form.password.label }}
                 {{ form.password}}
 		{% if form.password.errors %}

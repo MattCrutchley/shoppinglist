@@ -29,8 +29,17 @@ class items(db.Model):
         return ''.join(['id:',str(self.id),'\r\n'
             'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])
 
+class lists_(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    name = db.Column(db.String(50), nullable=False, unique = True)
+
+    def __repr__(self):
+        return ''.join(['id:',str(self.id),'\r\n','user_id',str(self.user_id),'\r\n','name: ', self.name])
+
 class master(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    list_id = db.Column(db.Integer, db.ForeignKey('lists_.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     item_id = db.Column(db.Integer, db.ForeignKey('items.id'))
     name = db.Column(db.String(50), nullable=False)
@@ -38,7 +47,7 @@ class master(db.Model):
     units = db.Column(db.String(30), nullable=False)
     def __repr__(self):
         return ''.join([
-          'user_id',str(self.user_id),'\r\n','item_id',str(self.item_id),'\r\n',  'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', self.units])     
+            'list_id',str(self.list_id),'user_id',str(self.user_id),'\r\n','item_id',str(self.item_id),'\r\n',  'name: ', self.name,'\r\n', 'quantity', str(self.quantity), '\r\n','units ', str(self.units)])     
        
         
 

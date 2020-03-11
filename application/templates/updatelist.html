@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Shopping list</title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron text-center">
+	<h1>Update <st/h1> </br>
+	<h2>{{ list_.name }} </h2>
+</div>
+
+<div class='form'>
+	<form action="/update/{{list_.id}}" method="POST">
+	<table>
+		<tr>
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}
+            {{ form.name }}
+	    {% if form.name.errors %}
+            	{% for error in form.name.errors %}
+                	 <span>{{ error }}</span>
+            	{% endfor %}
+            {% endif %}	  
+	     {{ form.submit }}
+		</tr>
+	</table>
+
+{% endblock %}
