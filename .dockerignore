@@ -1,2 +1,4 @@
 /application/images
 *.md
+/.coverage
+/tests/.coverage
