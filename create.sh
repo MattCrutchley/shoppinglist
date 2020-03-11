@@ -43,3 +43,4 @@ bash run.sh
 else
 echo "no run.sh file in this directory"
 fi
+fi
