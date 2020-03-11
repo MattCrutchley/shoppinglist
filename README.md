@@ -54,6 +54,7 @@ Please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 
 ![Risk assesment](images/Risk_assesment.png)
 
+
 ### Deployment
 The app was deployed to Azure using Jenkins as a CI server, the data is stored in an Azure managed database, webhooks on github trigger Jenkins running a series of tests on a seperate VM, if these are sucsessful another Jenkins job will then run to redeploy the application.
 
