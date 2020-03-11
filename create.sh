@@ -38,7 +38,7 @@ echo "tables created"
 echo "would you like to run the app nowi y/n"
 read apprun
 if [ ${apprun} == "y" ]; then
-if [ -s run.sh ]; then	
+if [ -s apprun.sh ]; then	
 bash run.sh
 else
 echo "no run.sh file in this directory"
