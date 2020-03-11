@@ -58,9 +58,9 @@ Please click [here](https://github.com/MattCrutchley/shoppinglist/tree/master/im
 ### Deployment
 The app was deployed to Azure using Jenkins as a CI server, the data is stored in an Azure managed database, webhooks on github trigger Jenkins running a series of tests on a seperate VM, if these are sucsessful another Jenkins job will then run to redeploy the application.
 
-Please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg) for a higher resolution image
+Please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipeline.jpg) for a higher resolution image
 
-![CI pipeline](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipline.jpg)
+![CI pipeline](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/CI_pipeline.jpg)
 
 Please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png) for a higher resolution image
 ![Cloud infrastructure](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png)
