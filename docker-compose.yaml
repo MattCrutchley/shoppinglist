@@ -3,26 +3,31 @@ services:
   shoppinglist-app:
     image: mattcrutchley/shoppinglist-app
     build: .
+    networks:
+      - app        
     ports:
       - target: 5000
         published: 5000
     depends_on:
       - shoppinglist-db
     environment:
-      - DATABASE_URI=mysql+pymysql://root:password@shoppinglist_shoppinglist-db_1/db
-      - SECRET_KEY=abcd    
-  jenkins:
-    image: jenkins/jenkins:latest
-    ports:
-      - target: 8080
-        published: 8080
-    depends_on:
-      - shoppinglist-db
+      - DATABASE_URI=mysql+pymysql://root:${rootpass}@shoppinglist-db/db
+      - SECRET_KEY=${SECRET_KEY}
   shoppinglist-db:
     image: mattcrutchley/shoppinglist-db
+    networks:
+      - app        
     ports:
       - target: 3306
         published: 3306
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=db     
+      - MYSQL_ROOT_PASSWORD=${rootpass}
+      - MYSQL_DATABASE=db
+    volumes:
+      - type: volume
+        source: flasksql
+        target: /var/lib/mysql       
+networks:
+  app:
+volumes:
+  flasksql:
