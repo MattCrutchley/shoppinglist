@@ -7,7 +7,17 @@ services:
       - target: 5000
         published: 5000
     depends_on:
-      - shoppinglist-db        
+      - shoppinglist-db
+    environment:
+      - DATABASE_URI=mysql+pymysql://root:password@shoppinglist_shoppinglist-db_1/db
+      - SECRET_KEY=abcd    
+  jenkins:
+    image: jenkins/jenkins:latest
+    ports:
+      - target: 8080
+        published: 8080
+    depends_on:
+      - shoppinglist-db
   shoppinglist-db:
     image: mattcrutchley/shoppinglist-db
     ports:
@@ -15,3 +25,4 @@ services:
         published: 3306
     environment:
       - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db     
