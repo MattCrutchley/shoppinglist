@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  shoppinglist-app:
+    image: mattcrutchley/shoppinglist-app
+    build: .
+    ports:
+      - target: 5000
+        published: 5000
+    depends_on:
+      - shoppinglist-db        
+  shoppinglist-db:
+    image: mattcrutchley/shoppinglist-db
+    ports:
+      - target: 3306
+        published: 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
