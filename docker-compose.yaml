@@ -15,6 +15,7 @@ services:
       - SECRET_KEY=${SECRET_KEY}
   shoppinglist-db:
     image: mattcrutchley/shoppinglist-db
+    container_name: shoppinglist-db
     networks:
       - app        
     ports:
