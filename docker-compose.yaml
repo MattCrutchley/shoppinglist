@@ -3,8 +3,6 @@ services:
   shoppinglist-app:
     image: mattcrutchley/shoppinglist-app
     build: .
-    networks:
-      - app        
     ports:
       - target: 5000
         published: 5000
@@ -17,8 +15,6 @@ services:
     image: mattcrutchley/shoppinglist-db
     build: ./createsqlimage/
     container_name: shoppinglist-db
-    networks:
-      - app        
     ports:
       - target: 3306
         published: 3306
@@ -28,7 +24,18 @@ services:
       - type: volume
         source: flasksql
         target: /var/lib/mysql       
-networks:
-  app:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - target: 80
+        published: 80
+    depends_on:
+      - shoppinglist-app
+    volumes:
+      - type: bind
+      source: ./nginx.conf
+      target: /etc/nginx/nginx.conf
+        
 volumes:
   flasksql:
