@@ -3,9 +3,6 @@ services:
   shoppinglist-app:
     image: mattcrutchley/shoppinglist-app
     build: .
-    ports:
-      - target: 5000
-        published: 5000
     depends_on:
       - shoppinglist-db
     environment:
@@ -15,9 +12,6 @@ services:
     image: mattcrutchley/shoppinglist-db
     build: ./createsqlimage/
     container_name: shoppinglist-db
-    ports:
-      - target: 3306
-        published: 3306
     environment:
       - MYSQL_ROOT_PASSWORD=${rootpass}
     volumes:
@@ -34,8 +28,7 @@ services:
       - shoppinglist-app
     volumes:
       - type: bind
-      source: ./nginx.conf
-      target: /etc/nginx/nginx.conf
-        
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
 volumes:
   flasksql:
