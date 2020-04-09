@@ -62,6 +62,6 @@ Please click [here](images/CI_pipeline.png) for a higher resolution image
 
 ![CI pipeline](images/CI_pipeline.png)
 
-Please click [here](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png) for a higher resolution image
-![Cloud infrastructure](https://github.com/MattCrutchley/shoppinglist/blob/mulitilist/images/Cloud_infastructure.png)
+Please click [here](images/Cloud_infastructure.png) for a higher resolution image
+![Cloud infrastructure](images/Cloud_infastructure.png)
 
