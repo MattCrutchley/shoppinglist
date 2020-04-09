@@ -1,0 +1,24 @@
+- name: Install docker     
+  hosts: docker
+  become: true
+  tasks:
+    - name: docker gpg key
+      apt_key:
+        url: "https://download.docker.com/linux/debian/gpg"
+        state: present
+    - name: docker apt repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"
+        state: present
+    - name: docker install
+      apt:
+        pkg:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        state: latest
+        update_cache: true
+    - name: docker service
+      service:
+        name: docker
+        state: started
