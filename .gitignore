@@ -4,3 +4,4 @@
 /*swp
 /application/*swp
 /tests/__pycache__/*
+/terraform/.terraform/*
