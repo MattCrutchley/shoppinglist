@@ -1,5 +1,9 @@
 # Shopping list web application
 
+## Deployment steps
+
+requirements: Terraform
+
 ## Brief
 The objective of this project is to create a web application in python that has functionality to create, read update and delete information.
 
