@@ -2,7 +2,17 @@
 
 ## Deployment steps
 
-requirements: Terraform
+### Quickstart
+
+Requirements: Docker, Docker Compose
+
+(these requirements can be installed by running the dockerinstall.sh script)
+
+The applicaiton can be deployed using docker compose you will firts need to export a value for the rootpass (password for mysql database)  variable:
+
+```export rootpass=[enter value]```
+
+```docker-compose up -d```
 
 ## Brief
 The objective of this project is to create a web application in python that has functionality to create, read update and delete information.
