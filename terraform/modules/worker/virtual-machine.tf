@@ -14,11 +14,11 @@ resource "azurerm_virtual_machine" "worker" {
 
   storage_image_reference {
 
-    publisher = "credativ"
+    publisher = "RedHat"
 
-    offer     = "Debian"
+    offer     = "RHEL-SAP-HANA"
 
-    sku       = "9"
+    sku       = "7.3"
 
     version   = "latest"
 

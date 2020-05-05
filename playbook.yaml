@@ -1,24 +1,46 @@
-- name: Install docker     
+---
+- name: Install Docker
+  gather_facts: No
   hosts: docker
-  become: true
+
   tasks:
-    - name: docker gpg key
-      apt_key:
-        url: "https://download.docker.com/linux/debian/gpg"
-        state: present
-    - name: docker apt repository
-      apt_repository:
-        repo: "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"
-        state: present
-    - name: docker install
-      apt:
-        pkg:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
+    - name: Install yum utils
+      yum:
+        name: yum-utils
         state: latest
-        update_cache: true
-    - name: docker service
+
+    - name: Install device-mapper-persistent-data
+      yum:
+        name: device-mapper-persistent-data
+        state: latest
+
+    - name: Install lvm2
+      yum:
+        name: lvm2
+        state: latest
+
+    - name: Add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+      become: yes
+
+    - name: Install Docker
+      package:
+        name: docker-ce
+        state: latest
+      become: yes
+
+    - name: Start Docker service
       service:
         name: docker
         state: started
+        enabled: yes
+      become: yes
+
+    - name: Add user jenkins to docker group
+      user:
+        name: jenkins
+        groups: docker
+        append: yes
+      become: yes

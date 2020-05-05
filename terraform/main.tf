@@ -10,7 +10,7 @@ module "master" {
 
   source = "./modules/master"
 
-  admin_user = "jenkins"
+  admin_user = "matthew"
 
   resource_group = azurerm_resource_group.default
 
@@ -24,7 +24,7 @@ module "worker" {
 
   source = "./modules/worker"
 
-  admin_user = "jenkins"
+  admin_user = "matthew"
 
   resource_group = azurerm_resource_group.default
 
