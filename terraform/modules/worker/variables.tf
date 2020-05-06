@@ -1,5 +1,5 @@
 
-variable "admin_user" {}
+variable "admin_user" {default = "matthew"}
 
 variable "resource_group" {}
 
