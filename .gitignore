@@ -5,3 +5,5 @@
 /application/*swp
 /tests/__pycache__/*
 /terraform/.terraform/*
+/terraform/terraform.tfstate.backup
+/terraform/terraform.tfstate

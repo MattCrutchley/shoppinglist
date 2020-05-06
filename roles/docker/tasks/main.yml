@@ -1,0 +1,40 @@
+---
+# tasks file for docker
+    - name: Setting HOME Directory Path
+      set_fact:
+        _home: "{{ ansible_env['HOME'] }}"
+
+    - name: Fetch docker version
+      shell: docker version 2>&1 | grep Version | awk '{print $2}'
+      register: docker_version
+
+    - name: Check if docker is installed, download binary otherwise
+      get_url:
+        url: "https://download.docker.com/linux/static/stable/x86_64/docker-{{ _docker_version }}-ce.tgz"
+        dest: "{{ _home }}"
+      when: docker_version.stdout == ''
+
+    - name: Extract binary
+      unarchive:
+        src: "{{ _home }}/docker-{{ _docker_version }}-ce.tgz"
+        dest: "{{ _home }}/"
+        remote_src: yes
+        creates: "{{ _home }}/docker/dockerd"
+      when: docker_version.stdout == ''
+
+    - name: Copy Docker Binaries to /usr/bin
+      shell: cp {{ _home }}/docker/docker* /usr/bin/
+      args:
+        creates: /usr/bin/docker
+      become: true
+
+    - name: start docker
+      shell: dockerd &
+      become: true
+      args:
+        creates: /var/run/docker.pid
+      register: tmp
+
+    - name: Debug
+      debug:
+        var: tmp

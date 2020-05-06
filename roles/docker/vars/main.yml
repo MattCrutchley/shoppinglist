@@ -1,0 +1,3 @@
+---
+# vars file for docker
+_docker_version: 17.12.0
