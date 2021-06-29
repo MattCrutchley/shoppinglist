@@ -13,11 +13,7 @@ services:
     build: ./createsqlimage/
     container_name: shoppinglist-db
     environment:
-      - MYSQL_ROOT_PASSWORD=${rootpass}
-    volumes:
-      - type: volume
-        source: flasksql
-        target: /var/lib/mysql       
+      - MYSQL_ROOT_PASSWORD=${rootpass}     
   nginx:
     image: nginx:latest
     container_name: nginx
